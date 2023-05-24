@@ -6,5 +6,5 @@ spring:
     show-sql: true
   datasource:
     url: jdbc:mysql://${MY_HOST:localhost}:3306/bookshare?useSSL=false
-    username: root
-    password: password
+    username:
+    password:
