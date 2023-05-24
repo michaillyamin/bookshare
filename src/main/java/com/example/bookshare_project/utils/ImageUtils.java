@@ -1,8 +1,7 @@
 package com.example.bookshare_project.utils;
 
 import com.example.bookshare_project.services.UserService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -10,9 +9,8 @@ import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
+@Slf4j
 public class ImageUtils {
-
-    public static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
     public static byte[] compressBytes(byte[] data) {
         Deflater deflater = new Deflater();
@@ -27,7 +25,7 @@ public class ImageUtils {
         try {
             outputStream.close();
         } catch (IOException e) {
-            LOG.error("Cannot compress Bytes");
+            log.error("Cannot compress Bytes");
         }
         System.out.println("Compressed image byte size - " + outputStream.toByteArray().length);
         return outputStream.toByteArray();
@@ -45,7 +43,7 @@ public class ImageUtils {
             }
             outputStream.close();
         } catch (IOException | DataFormatException e) {
-            LOG.error("Cannot decompress Bytes");
+            log.error("Cannot decompress Bytes");
         }
         return outputStream.toByteArray();
     }
